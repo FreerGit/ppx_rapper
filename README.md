@@ -1,9 +1,7 @@
 ![Build](https://github.com/roddyyaga/ppx_rapper/workflows/Build%20and%20test/badge.svg)
 
 > [!WARNING]  
-> Critical content demanding immediate user attention due to potential risks.
-> fdasfdsa
-> fdsa
+> Since the dev is inactive, I forked this repo and updated it. It *only* works for eio.
 
 # ppx_rapper
 An extension that allows named parameters in SQL with types inferred, and syntax checking of SQL as a preprocessing

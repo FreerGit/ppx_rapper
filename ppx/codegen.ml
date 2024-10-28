@@ -3,7 +3,6 @@ open Ppxlib
 module Buildef = Ast_builder.Default
 
 type input_kind = [ `Labelled_args | `Record ]
-
 type output_kind = [ `Tuple | `Record | `Function ]
 
 type extension_contents = {
@@ -39,8 +38,7 @@ let caqti_type_of_param ~loc Query.{ typ; opt; _ } =
         | "ptime" -> [%expr ptime]
         | "ptime_span" -> [%expr ptime_span]
         | other ->
-            raise (Error (Printf.sprintf "Base type '%s' not supported" other))
-        )
+            raise (Error (Printf.sprintf "Base type '%s' not supported" other)))
     | Some module_name, typ ->
         (* This case covers [cdate] and [ctime] *)
         Buildef.pexp_ident ~loc
@@ -55,7 +53,7 @@ let caqti_type_tup_of_expressions ~loc expressions =
   | 0 -> [%expr unit]
   | _ ->
       let f elem_type_expr apply_expr =
-        [%expr tup2 [%e elem_type_expr] [%e apply_expr]]
+        [%expr t2 [%e elem_type_expr] [%e apply_expr]]
       in
       List.fold_right ~f
         ~init:(List.last_exn expressions)
@@ -83,7 +81,6 @@ let nth_loader_pat ~loc n =
   Buildef.(ppat_var ~loc (Loc.make ~loc s))
 
 let lident_of_param ~loc param = lident_of_string ~loc param.Query.name
-
 let var_of_param ~loc param = Loc.make ~loc param.Query.name
 
 (** Maps parsed parameters to ident expressions of their names *)
@@ -343,7 +340,7 @@ let query_function ~loc ?(body_fn = fun x -> x) function_body_factory
               (List.init (List.length groups) ~f:(fun n ->
                    nth_loader_pat ~loc n))
           in
-          [%expr fun [%p loaders] -> [%e without_loaders_parameter]] )
+          [%expr fun [%p loaders] -> [%e without_loaders_parameter]])
   | _ -> without_loaders_parameter
 
 let exec_function ~body_fn ~loc =
