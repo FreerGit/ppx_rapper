@@ -1,5 +1,10 @@
 ![Build](https://github.com/roddyyaga/ppx_rapper/workflows/Build%20and%20test/badge.svg)
 
+> [!WARNING]  
+> Critical content demanding immediate user attention due to potential risks.
+> fdasfdsa
+> fdsa
+
 # ppx_rapper
 An extension that allows named parameters in SQL with types inferred, and syntax checking of SQL as a preprocessing
 step. Like [ppx_mysql](https://github.com/issuu/ppx_mysql) but using Caqti. The name comes from the idea of
